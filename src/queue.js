@@ -25,11 +25,22 @@ class Queue {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
 
+    // let newValue = new ListNode(value);
+    // if (this.value) {
+    //   newValue.next = this.value;
+    // }
+    // this.value = newValue;
+
     let newValue = new ListNode(value);
     if (this.value) {
-      newValue.next = this.value;
+      let current = this.value;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newValue;
+    } else {
+      this.value = newValue;
     }
-    this.value = newValue;
 
   }
 
@@ -40,13 +51,17 @@ class Queue {
     let current = this.value;
     let previous = null;
 
-    while (current.next) {
-      previous = current;
-      current = current.next;
-    }
+    // while (current.next) {
+    //   previous = current;
+    //   current = current.next;
+    // }
 
-    if (previous) {
-      previous.next = null;
+    // if (previous) {
+    //   previous.next = null;
+    // }
+
+    if (current.next) {
+      this.value = current.next;
     }
 
     return current.value;
